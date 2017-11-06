@@ -14,7 +14,9 @@ export default {
       }
   },
   methods: {
-
+    login(){
+//      this.$vux.toast.text('hello', 'middle')
+    }
   },
   created () {
 
@@ -44,10 +46,10 @@ export default {
     </div>
     <div class="form-list">
       <div class="list-item">
-        <me-button round type="primary">登录</me-button>
+        <me-button round type="primary" @click="login">登录</me-button>
       </div>
       <div class="list-item">
-        <me-button round>忘记密码？</me-button>
+        <me-button round @click="$router.push('forget')">忘记密码？</me-button>
       </div>
     </div>
   </div>

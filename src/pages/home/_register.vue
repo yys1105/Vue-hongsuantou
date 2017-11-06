@@ -17,7 +17,9 @@
       }
     },
     methods: {
-
+      photoShot(){
+        this.$refs.photo.click();
+      }
     },
     created () {
 
@@ -72,6 +74,10 @@
           placeholder="邀请码"
           v-model="invCode"
           type="text">
+          <div slot="append">
+            <input type="file" accept="image/*" style="display: none" ref="photo">
+            <i class="iconfont icon-saoma" @click="photoShot"></i>
+          </div>
         </me-input>
       </div>
     </div>
