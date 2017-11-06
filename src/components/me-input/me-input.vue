@@ -62,28 +62,28 @@
     padding-right 0!important
   .input-wrap
     position relative
-    padding .1rem .75rem .1rem .3rem
+    padding .15rem .8rem .15rem .4rem
     border-bottom .01rem solid color-light-grey
     .icon-font
-      width .3rem
-      line-height .2rem
+      width .4rem
+      line-height .25rem
       text-align center
       position absolute
-      top .1rem
+      top .15rem
       left 0
       color color-dark-grey
     .input
-      height .2rem
+      height .25rem
       width 100%
       & > input
         width 100%
-        line-height .2rem
+        line-height .25rem
         border-style none
         outline none
-        font-size .12rem
+        font-size .14rem
         &::-webkit-input-placeholder
-          font-size .12rem
-          line-height .2rem
+          font-size .14rem
+          line-height .25rem
     .button
       width .7rem
       line-height .2rem

@@ -77,7 +77,7 @@
     -webkit-user-select none
     -ms-user-select none
     padding .12rem .2rem
-    font-size .12rem
+    font-size .14rem
     border-radius .04rem
   .me--round
     border-radius .2rem

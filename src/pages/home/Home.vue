@@ -38,8 +38,8 @@
       display table-cell
       width 1%
       text-align center
-      line-height .375rem
-      font-size .12rem
+      line-height .4rem
+      font-size .14rem
       color #8c939d
       background-color #fedfeb
       position relative
@@ -50,9 +50,9 @@
         position:absolute
         left 50%
         bottom 0
-        margin-left -.04rem
+        margin-left -.07rem
         border-style solid
         border-color transparent
         border-bottom-color #f7f9f8
-        border-width .035rem .04rem
+        border-width .06rem .07rem
 </style>

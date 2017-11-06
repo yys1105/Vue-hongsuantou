@@ -91,8 +91,7 @@
 
 <style lang="stylus" scoped>
   .form-list
-    padding-top .15rem
-    padding-bottom .15rem
+    padding-top .25rem
     .list-item
-      padding 0 .5rem .15rem .5rem
+      padding 0 .6rem .25rem .6rem
 </style>
