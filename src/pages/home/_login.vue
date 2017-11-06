@@ -1,27 +1,51 @@
 <script>
   import MeInput from '../../components/me-input'
   import MeButton from '../../components/me-button'
-export default {
-  name:'login',
-  components: {
-    MeInput,
-    MeButton
-  },
-  data () {
-      return {
-        phone:null,
-        password:null
-      }
-  },
-  methods: {
-    login(){
-//      this.$vux.toast.text('hello', 'middle')
-    }
-  },
-  created () {
 
+  export default {
+    name: 'login',
+    components: {
+      MeInput,
+      MeButton
+    },
+    data() {
+      return {
+        phone: '13011111111',
+        password: '1'
+      }
+    },
+    methods: {
+      login() {
+//      this.$vux.toast.text('hello', 'middle')
+        if (this.validator()) {
+          console.log(this)
+          /*this.$httpPost('/login', {})
+            .then((data) => {
+              console.log(data)
+            }).catch(err => {
+            this.$vux.toast.text(err.message, 'middle')
+          })*/
+        }
+      },
+      validator() {
+        var phoneReg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/
+        if (!this.phone) {
+          this.$vux.toast.text('手机号不能为空', 'middle')
+          return
+        } else if (!phoneReg.test(this.phone)) {
+          this.$vux.toast.text('手机号非法', 'middle')
+          return
+        } else if (!this.password) {
+          this.$vux.toast.text('密码不能为空', 'middle')
+          return
+        }
+        return true
+      }
+    },
+    created() {
+
+    }
   }
-}
 </script>
 
 <template>
@@ -39,7 +63,7 @@ export default {
         <me-input
           icon="iconfont icon-mima"
           placeholder="密码"
-          v-model="phone"
+          v-model="password"
           type="password">
         </me-input>
       </div>

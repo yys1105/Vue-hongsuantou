@@ -3,11 +3,13 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import http from './config/http'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import VueRouter from 'vue-router'
 import  { ToastPlugin } from 'vux'
 
+Vue.use(http)
 Vue.use(ElementUI)
 Vue.use(VueRouter)
 Vue.use(ToastPlugin)
