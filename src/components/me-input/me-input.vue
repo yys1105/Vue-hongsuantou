@@ -80,6 +80,7 @@
         line-height .2rem
         border-style none
         outline none
+        font-size .12rem
         &::-webkit-input-placeholder
           font-size .12rem
           line-height .2rem

@@ -1,13 +1,16 @@
 <script>
   import MeInput from '../../components/me-input'
+  import MeButton from '../../components/me-button'
 export default {
   name:'login',
   components: {
-    MeInput
+    MeInput,
+    MeButton
   },
   data () {
       return {
-        phone:null
+        phone:null,
+        password:null
       }
   },
   methods: {
@@ -20,6 +23,7 @@ export default {
 </script>
 
 <template>
+  <div>
     <div class="form-list">
       <div class="list-item">
         <me-input
@@ -38,11 +42,21 @@ export default {
         </me-input>
       </div>
     </div>
+    <div class="form-list">
+      <div class="list-item">
+        <me-button round type="primary">登录</me-button>
+      </div>
+      <div class="list-item">
+        <me-button round>忘记密码？</me-button>
+      </div>
+    </div>
+  </div>
 </template>
 
 <style lang="stylus" scoped>
   .form-list
-    margin-top .15rem
+    padding-top .15rem
+    padding-bottom .15rem
     .list-item
-      margin 0 .4rem .15rem .4rem
+      padding 0 .5rem .15rem .5rem
 </style>

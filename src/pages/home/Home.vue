@@ -1,8 +1,9 @@
 <script>
   import Login from './_login.vue'
+  import Register from './_register.vue'
   export default {
     name: 'home',
-    components:{Login},
+    components:{Login,Register},
     data() {
       return {
         isActive:true
@@ -25,7 +26,7 @@
         <login></login>
       </template>
       <template v-if="!isActive">
-2
+        <register></register>
       </template>
     </div>
   </div>
