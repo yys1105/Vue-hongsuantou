@@ -1,4 +1,5 @@
 import axios from 'axios'
+import store from '../../vuex'
 import {BASE_URL} from '../const'
 
 const instance = axios.create({
@@ -9,7 +10,7 @@ const TOKEN = 'token';
 function handleResponse(data) {
   switch (data.statusCode) {
     case 301:
-      return 'userSignOut';
+      return store.dispatch('signOut');
     case 200:
       return Promise.resolve(data);
     default:

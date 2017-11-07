@@ -10,21 +10,19 @@
     },
     data() {
       return {
-        phone: '13011111111',
-        password: '1'
+        phone: '',
+        password: ''
       }
     },
     methods: {
       login() {
-//      this.$vux.toast.text('hello', 'middle')
         if (this.validator()) {
-          console.log(this)
-          /*this.$httpPost('/login', {})
+          this.$httpPost('/login', {})
             .then((data) => {
-              console.log(data)
+              this.$vux.toast.text(data.message, 'middle')
             }).catch(err => {
             this.$vux.toast.text(err.message, 'middle')
-          })*/
+          })
         }
       },
       validator() {
