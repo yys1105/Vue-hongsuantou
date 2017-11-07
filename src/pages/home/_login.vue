@@ -10,8 +10,8 @@
     },
     data() {
       return {
-        phone: '',
-        password: ''
+        phone: '13011111111',
+        password: '1'
       }
     },
     methods: {
@@ -19,7 +19,11 @@
         if (this.validator()) {
           this.$httpPost('/login', {})
             .then((data) => {
-              this.$vux.toast.text(data.message, 'middle')
+              if (data.statusCode == 200) {
+                this.$router.push({ path: 'homePage' })
+              } else {
+                this.$vux.toast.text(data.message, 'middle')
+              }
             }).catch(err => {
             this.$vux.toast.text(err.message, 'middle')
           })
