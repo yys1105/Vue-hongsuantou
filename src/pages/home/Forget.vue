@@ -1,16 +1,17 @@
 <script>
   import MeButton from '../../components/me-button'
-  import { XHeader,Group,XInput,XButton } from 'vux'
+  import {XHeader, Group, XInput, XButton} from 'vux'
+
   export default {
     name: 'forget',
-    components:{MeButton,XHeader,Group,XInput,XButton},
+    components: {MeButton, XHeader, Group, XInput, XButton},
     data() {
       return {
-        value1:null,
-        pageHeight:0
+        value1: null,
+        pageHeight: 0
       }
     },
-    created () {
+    created() {
       this.pageHeight = window.screen.availHeight
     }
   }
@@ -30,6 +31,9 @@
         </x-input>
         <x-input title="新密码" v-model="value1"></x-input>
       </group>
+      <div class="submit-button">
+        <me-button round type="primary">确认</me-button>
+      </div>
     </div>
   </transition>
 </template>
@@ -37,10 +41,14 @@
 <style scoped lang="stylus">
   .page
     background-color #f7f7f7
+
   .vux-header
     background-color #fff
     border-bottom .01rem solid #e0e0e0
     .header-text
       font-size .14rem
       color #696969
+
+  .submit-button
+    margin .5rem .6rem 0 .6rem
 </style>
