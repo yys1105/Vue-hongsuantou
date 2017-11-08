@@ -4,6 +4,7 @@ import Home from '../pages/home/Home.vue'
 import Forget from '../pages/home/Forget.vue'
 import HomePage from '../pages/user-center/HomePage.vue'
 import MyShare from '../pages/user-center/MyShare.vue'
+import Recharge from '../pages/user-center/Recharge.vue'
 import PersonalInfo from '../pages/personal-info/PersonalInfo.vue'
 import NickName from '../pages/personal-info/NickName.vue'
 import Name from '../pages/personal-info/Name.vue'
@@ -39,6 +40,11 @@ export default new Router({
       path: '/homePage/myShare',
       name: 'myShare',
       component: MyShare
+    },
+    {
+      path: '/homePage/recharge',
+      name: 'recharge',
+      component: Recharge
     },
     {
       path: '/personalInfo',

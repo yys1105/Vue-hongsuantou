@@ -7,6 +7,8 @@ import store from './vuex'
 import http from './config/http'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
+import 'mint-ui/lib/style.css'
+import './assets/style/my-mint.styl'
 import VueRouter from 'vue-router'
 import  { ToastPlugin } from 'vux'
 

@@ -38,18 +38,18 @@
       </div>
     </div>
     <group>
-      <cell :title="'完善个人资料（姓名、生日必填）'" link="/personalInfo">
+      <cell title="完善个人资料（姓名、生日必填）" link="/personalInfo">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_data.png"></div>
       </cell>
-      <cell :title="'充值续费'" :link="{path:'/demo'}">
+      <cell title="充值续费" link="/homePage/recharge">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_top_up.png"></div>
       </cell>
-      <cell :title="'我的预定'" link="https://vux.li">
+      <cell title="我的预定" link="https://vux.li">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_consult.png"></div>
       </cell>
     </group>
     <group>
-      <cell :title="'我的钱包'" link="/component/radio">
+      <cell title="我的钱包" link="/component/radio">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_purse.png"></div>
       </cell>
       <cell :title="'我的银行卡'" :link="{path:'/demo'}">
