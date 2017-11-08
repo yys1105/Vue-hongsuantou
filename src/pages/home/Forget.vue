@@ -46,7 +46,7 @@
     background-color #fff
     border-bottom .01rem solid #e0e0e0
     .header-text
-      font-size .14rem
+      font-size .16rem
       color #696969
 
   .submit-button

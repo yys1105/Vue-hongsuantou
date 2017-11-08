@@ -31,14 +31,14 @@
         </div>
         <div class="qrcode">
           <div class="text">二维码</div>
-          <div class="qrcode-icon">
+          <div class="qrcode-icon" @click="$router.push({name: 'myShare', params: { userId: 123 }})">
             <span class="iconfont icon-erweima"></span>
           </div>
         </div>
       </div>
     </div>
     <group>
-      <cell :title="'完善个人资料（姓名、生日必填）'" link="/component/radio">
+      <cell :title="'完善个人资料（姓名、生日必填）'" link="/personalInfo">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_data.png"></div>
       </cell>
       <cell :title="'充值续费'" :link="{path:'/demo'}">
@@ -53,7 +53,7 @@
         <div slot="icon"><img class="icon-img" src="/static/images/mine_purse.png"></div>
       </cell>
       <cell :title="'我的银行卡'" :link="{path:'/demo'}">
-        <div slot="icon"><img class="icon-img" src="/static/images/mine_top_up.png"></div>
+        <div slot="icon"><img class="icon-img" src="/static/images/mine_card.png"></div>
       </cell>
       <cell :title="'我的分析记录'" link="https://vux.li">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_record.png"></div>
