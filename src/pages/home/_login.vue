@@ -10,8 +10,8 @@
     },
     data() {
       return {
-        phone: '13011111111',
-        password: '1'
+        phone: '18306133926',
+        password: '123456'
       }
     },
     methods: {

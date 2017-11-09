@@ -1,14 +1,24 @@
 <script>
-  import { Cell, Group } from 'vux'
+  import { Cell, Group, dateFormat  } from 'vux'
   export default {
     name: 'homePage',
     components: {
       Cell, Group
     },
     data() {
-      return {}
+      return {
+      }
     },
-    methods: {},
+    methods: {
+      call:function () {
+        var hour = dateFormat(new Date(), 'HH')
+        if(hour<8||hour>20){
+          this.$vux.toast.text('很抱歉,客服每日为你服务时间是：08:00-20:00', 'middle')
+        }else{
+          this.$refs.phone.click()
+        }
+      }
+    },
     created() {
 
     }
@@ -31,7 +41,7 @@
         </div>
         <div class="qrcode">
           <div class="text">二维码</div>
-          <div class="qrcode-icon" @click="$router.push({name: 'myShare', params: { userId: 123 }})">
+          <div class="qrcode-icon" @click="$router.push({name: 'sharePage', params: { userId: 123 }})">
             <span class="iconfont icon-erweima"></span>
           </div>
         </div>
@@ -55,29 +65,30 @@
       <cell title="我的银行卡" link="/homePage/myBankCard">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_card.png"></div>
       </cell>
-      <cell title="我的分析记录">
+      <cell title="我的分析记录" link="/homePage/myRecords">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_record.png"></div>
       </cell>
     </group>
     <group :gutter="10">
-      <cell title="我的分享">
+      <cell title="我的分享" link="/homePage/myShare">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_purse.png"></div>
       </cell>
-      <cell title="邀请好友">
+      <cell title="邀请好友" link="/homePage/myInviting">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_friend.png"></div>
       </cell>
-      <cell title="意见反馈">
+      <cell title="意见反馈" link="/homePage/opinion">
         <div slot="icon"><img class="icon-img" src="/static/images/message.png"></div>
       </cell>
     </group>
     <group :gutter="10">
-      <cell title="系统公告">
+      <cell title="系统公告" link="/homePage/announcement">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_announcement.png"></div>
       </cell>
-      <cell title="客服">
+      <cell title="客服" is-link @click.native="call">
+        <a href="tel:13764567708" style="display: none" ref="phone"></a>
         <div slot="icon"><img class="icon-img" src="/static/images/mine_contact.png"></div>
       </cell>
-      <cell title="关于我们">
+      <cell title="关于我们" link="/homePage/aboutUs">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_about.png"></div>
       </cell>
       <cell title="设置">
@@ -91,7 +102,7 @@
 </template>
 
 <style lang="stylus" scoped>
-  default-color = #eb133a
+  $default-color = #eb133a
   .page
     background-color #f7f7f7
   .personal-header
@@ -128,7 +139,7 @@
           padding .08rem 0
           & > span
             height .24rem
-            color default-color
+            color $default-color
             font-size .16rem
             background-color #fff
             border-radius 2px

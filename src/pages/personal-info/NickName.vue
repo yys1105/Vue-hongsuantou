@@ -20,7 +20,7 @@
 </script>
 
 <template>
-  <div class="page":style="{'min-height':pageHeight+'px'}">
+  <div class="page" :style="{'min-height':pageHeight+'px'}">
     <x-header :left-options="{backText: ''}">
       <span class="header-text">修改昵称</span>
       <span slot="right">保存</span>
