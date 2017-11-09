@@ -37,53 +37,53 @@
         </div>
       </div>
     </div>
-    <group>
+    <group :gutter="10">
       <cell title="完善个人资料（姓名、生日必填）" link="/personalInfo">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_data.png"></div>
       </cell>
       <cell title="充值续费" link="/homePage/recharge">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_top_up.png"></div>
       </cell>
-      <cell title="我的预定" link="https://vux.li">
+      <cell title="我的预定" link="/homePage/myAppointment">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_consult.png"></div>
       </cell>
     </group>
-    <group>
-      <cell title="我的钱包" link="/component/radio">
+    <group :gutter="10">
+      <cell title="我的钱包" link="/homePage/myWallet">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_purse.png"></div>
       </cell>
-      <cell :title="'我的银行卡'" :link="{path:'/demo'}">
+      <cell title="我的银行卡" link="/homePage/myBankCard">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_card.png"></div>
       </cell>
-      <cell :title="'我的分析记录'" link="https://vux.li">
+      <cell title="我的分析记录">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_record.png"></div>
       </cell>
     </group>
-    <group>
-      <cell :title="'我的分享'" link="/component/radio">
+    <group :gutter="10">
+      <cell title="我的分享">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_purse.png"></div>
       </cell>
-      <cell :title="'邀请好友'" :link="{path:'/demo'}">
+      <cell title="邀请好友">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_friend.png"></div>
       </cell>
-      <cell :title="'意见反馈'" link="https://vux.li">
+      <cell title="意见反馈">
         <div slot="icon"><img class="icon-img" src="/static/images/message.png"></div>
       </cell>
     </group>
-    <group>
-      <cell :title="'系统公告'" link="/component/radio">
+    <group :gutter="10">
+      <cell title="系统公告">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_announcement.png"></div>
       </cell>
-      <cell :title="'客服'" :link="{path:'/demo'}">
+      <cell title="客服">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_contact.png"></div>
       </cell>
-      <cell :title="'关于我们'" link="https://vux.li">
+      <cell title="关于我们">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_about.png"></div>
       </cell>
-      <cell :title="'设置'" link="https://vux.li">
+      <cell title="设置">
         <div slot="icon"><img class="icon-img" src="/static/images/mine_set.png"></div>
       </cell>
-      <cell :title="'退出登录'" link="https://vux.li">
+      <cell title="退出登录">
         <div slot="icon"><img class="icon-img" src="/static/images/message.png"></div>
       </cell>
     </group>

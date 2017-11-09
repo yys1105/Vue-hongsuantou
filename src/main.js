@@ -5,15 +5,13 @@ import App from './App'
 import router from './router'
 import store from './vuex'
 import http from './config/http'
-import ElementUI from 'element-ui'
-import 'element-ui/lib/theme-chalk/index.css'
-import 'mint-ui/lib/style.css'
-import './assets/style/my-mint.styl'
+// import ElementUI from 'element-ui'
+// import 'element-ui/lib/theme-chalk/index.css'
 import VueRouter from 'vue-router'
 import  { ToastPlugin } from 'vux'
 
 Vue.use(http)
-Vue.use(ElementUI)
+// Vue.use(ElementUI)
 Vue.use(VueRouter)
 Vue.use(ToastPlugin)
 
