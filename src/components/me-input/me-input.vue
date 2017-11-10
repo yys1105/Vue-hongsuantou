@@ -10,7 +10,10 @@
         type: String
       },
       value: [String, Number],
-      type:String
+      type: String,
+      mobile: {
+        type: [String, Number],
+      }
     },
     data() {
       return {
@@ -29,7 +32,7 @@
         this.$emit('change', value);
       },
     },
-    watch:{
+    watch: {
       'value'(val, oldValue) {
         this.setCurrentValue(val);
       }
@@ -59,7 +62,8 @@
   color-light-grey = #e1e1e1
   color-dark-grey = #afafaf
   .padding-right
-    padding-right 0!important
+    padding-right 0 !important
+
   .input-wrap
     position relative
     padding .15rem .8rem .15rem .4rem
@@ -89,7 +93,7 @@
       line-height .2rem
       text-align right
       position absolute
-      top .1rem
+      top .15rem
       right 0.05rem
       font-size .12rem
 </style>

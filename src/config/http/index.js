@@ -15,6 +15,7 @@ function handleResponse(data) {
       return Promise.resolve(data);
     default:
       return Promise.reject(data);
+      // return Promise.resolve(data);
   }
 }
 function handleErr(data) {

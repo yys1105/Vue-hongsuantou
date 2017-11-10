@@ -10,31 +10,33 @@
     },
     data() {
       return {
-        phone: '18306133926',
+        mobile: '18094416520',
         password: '123456'
       }
     },
     methods: {
       login() {
         if (this.validator()) {
-          this.$httpPost('/login', {})
-            .then((data) => {
-              if (data.statusCode == 200) {
-                this.$router.push({ path: 'homePage' })
-              } else {
-                this.$vux.toast.text(data.message, 'middle')
-              }
-            }).catch(err => {
+          this.$httpPost('/api/user/login', {
+            mobile: this.mobile,
+            password: this.password
+          }).then((data) => {
+            console.log(data)
+            this.$store.dispatch('signIn', {userInfo: data.data, rememberMe: false});
+            if (data.statusCode == 200) {
+              this.$router.push({name: 'homePage'})
+            }
+          }).catch(err => {
             this.$vux.toast.text(err.message, 'middle')
           })
         }
       },
       validator() {
         var phoneReg = /^(13[0-9]|14[5|7]|15[0|1|2|3|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/
-        if (!this.phone) {
+        if (!this.mobile) {
           this.$vux.toast.text('手机号不能为空', 'middle')
           return
-        } else if (!phoneReg.test(this.phone)) {
+        } else if (!phoneReg.test(this.mobile)) {
           this.$vux.toast.text('手机号非法', 'middle')
           return
         } else if (!this.password) {
@@ -57,7 +59,7 @@
         <me-input
           icon="iconfont icon-shouji"
           placeholder="手机号"
-          v-model="phone"
+          v-model="mobile"
           type="number">
         </me-input>
       </div>

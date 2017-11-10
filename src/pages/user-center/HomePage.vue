@@ -7,6 +7,7 @@
     },
     data() {
       return {
+        userInfo:this.$store.getters.userInfo,
       }
     },
     methods: {
@@ -17,10 +18,24 @@
         }else{
           this.$refs.phone.click()
         }
+      },
+      //获取用户所有信息
+      getUserInfo:function () {
+        this.$httpPost('/api/user/getUserInfo', {}).then((data) => {
+          let userInfo = data.data
+          let token = this.$store.getters.token
+          userInfo.token = token
+          this.$store.dispatch('updateUserInfo', {userInfo: userInfo})
+
+        }).catch(err => {
+          this.$vux.toast.text(err.message, 'middle')
+        })
       }
     },
     created() {
-
+      if(!this.userInfo.id){
+        this.getUserInfo()
+      }
     }
   }
 </script>
@@ -34,9 +49,9 @@
           <img src="/static/images/hongsuantou.png">
         </div>
         <div class="info-con">
-          <div class="name">姚焱舒</div>
+          <div class="name">{{ userInfo.name||'未命名' }}</div>
           <div class="identity">
-            <span>8号人</span>
+            <span v-if="userInfo.personCode">{{ userInfo.personCode }}号人</span>
           </div>
         </div>
         <div class="qrcode">
