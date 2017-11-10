@@ -12,7 +12,7 @@
       }
     },
     created() {
-      this.pageHeight = window.screen.availHeight
+      this.pageHeight = document.body.clientHeight
     }
   }
 </script>

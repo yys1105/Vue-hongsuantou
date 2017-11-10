@@ -14,7 +14,7 @@
     methods:{
     },
     created() {
-      this.pageHeight = window.screen.availHeight
+      this.pageHeight = document.body.clientHeight
     }
   }
 </script>
@@ -37,13 +37,6 @@
 <style scoped lang="stylus">
   .page
     background-color #f7f7f7
-
-  .vux-header
-    background-color #fff
-    border-bottom .01rem solid #e0e0e0
-    .header-text
-      font-size .16rem
-      color #696969
 
   .label-text
     color #666
