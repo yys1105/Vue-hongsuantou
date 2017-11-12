@@ -10,8 +10,10 @@
     },
     data() {
       return {
-        mobile: '18094416520',
-        password: '123456'
+        /*mobile: '18094416520',
+        password: '123456',*/
+        mobile: null,
+        password: null
       }
     },
     methods: {
@@ -21,7 +23,7 @@
             mobile: this.mobile,
             password: this.password
           }).then((data) => {
-            console.log(data)
+//            console.log(data)
             this.$store.dispatch('signIn', {userInfo: data.data, rememberMe: false});
             if (data.statusCode == 200) {
               this.$router.push({name: 'homePage'})

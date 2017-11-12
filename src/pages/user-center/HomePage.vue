@@ -26,7 +26,6 @@
           let token = this.$store.getters.token
           userInfo.token = token
           this.$store.dispatch('updateUserInfo', {userInfo: userInfo})
-
         }).catch(err => {
           this.$vux.toast.text(err.message, 'middle')
         })
@@ -34,7 +33,10 @@
     },
     created() {
       if(!this.userInfo.id){
-        this.getUserInfo()
+        let _this = this
+        setTimeout(function () {
+          _this.getUserInfo()
+        })
       }
     }
   }

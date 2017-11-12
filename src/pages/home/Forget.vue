@@ -61,14 +61,20 @@
           password:this.password
         }).then((data)=>{
 //          console.log(data)
-          this.$vux.toast.text(data,'middle')
+          //修改用户密码前退出账号
+          this.$store.dispatch('signOut');
+          this.$vux.toast.text(data.data,'middle')
+          let _this = this
+          setTimeout(function () {
+            _this.$router.push({name: 'home'})
+          },1000)
         }).catch(err=>{
           this.$vux.toast.text(err.message,'middle')
         })
       }
     },
     created() {
-      this.$store.dispatch('signOut');
+
       this.pageHeight = document.body.clientHeight;
       this.getVerifyImg();
     }

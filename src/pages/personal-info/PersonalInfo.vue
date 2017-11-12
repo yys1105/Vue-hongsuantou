@@ -2,6 +2,7 @@
   import {
     XHeader,
     Group,
+    Actionsheet,
     XInput,
     XButton,
     Cell,
@@ -16,19 +17,20 @@
   export default {
     name: 'personalInfo',
     components: {
-      XHeader, Group, XInput, XButton, Cell, CellBox, CellFormPreview, PopupRadio, Datetime, XAddress
+      XHeader, Group, Actionsheet, XInput, XButton, Cell, CellBox, CellFormPreview, PopupRadio, Datetime, XAddress
     },
     data() {
       return {
         pageHeight: 0,
+        showGengerOpt:false,
         genderOpt: [{
-          key: 'man',
-          value: '男'
+          value: 'man',
+          label: '男'
         }, {
-          key: 'woman',
-          value: '女'
+          value: 'woman',
+          label: '女'
         }],
-        gender: this.$store.getters.userInfo.sex,
+        gender: '',
         addressData: ChinaAddressV4Data,
         showAddress: false,
         userInfo: this.$store.getters.userInfo,
@@ -73,6 +75,18 @@
       },
       setDatetime(time) {
         this.datetime = new Date(parseInt(time)).toLocaleString().split(" ")[0].split("/").join("-")
+      },
+      //选择性别
+      chooseGener(key) {
+        console.log(key)
+      },
+      setSex(){
+        let sex = this.userInfo.sex
+        if(sex=='man'){
+          this.gender = '男'
+        }else if(sex='woman'){
+          this.gender = '女'
+        }
       }
     },
     watch: {
@@ -84,6 +98,8 @@
       this.pageHeight = document.body.clientHeight
 
       this.setDatetime(this.$store.getters.userInfo.birthday || 0)
+
+      this.setSex()
     },
     computed: {}
   }
@@ -91,8 +107,10 @@
 
 <template>
   <div class="page" :style="{'min-height':pageHeight+'px'}">
-    <x-header :left-options="{backText: ''}"><span class="header-text">个人信息</span></x-header>
-    <div>
+    <div class="fix-header">
+      <x-header :left-options="{backText: ''}"><span class="header-text">个人信息</span></x-header>
+    </div>
+    <div class="fix-container">
       <group :gutter="-1">
         <cell is-link @click.native="changeImg">
           <input type="file" accept="image/*" style="display: none" ref="img">
@@ -110,7 +128,11 @@
             {{ userInfo.name }}
           </span>
         </cell>
-        <popup-radio title="性别" :options="genderOpt" v-model="gender"></popup-radio>
+        <cell title="性别" is-link>
+          <span class="cell-value">
+            {{ gender }}
+          </span>
+        </cell>
         <datetime v-model="datetime"
                   title="生日"
                   start-date="1970-01-01"
@@ -134,6 +156,7 @@
           </span>
         </cell>
       </group>
+      <actionsheet v-model="showGengerOpt" :menus="genderOpt" @on-click-menu="chooseGener" show-cancel></actionsheet>
     </div>
   </div>
 </template>
@@ -142,13 +165,6 @@
 <style scoped lang="stylus">
   .page
     background-color #f7f7f7
-
-  /*.vux-header
-    background-color #fff
-    border-bottom .01rem solid #e0e0e0
-    .header-text
-      font-size .16rem
-      color #696969*/
 
   .vux-label
     color red
