@@ -26,6 +26,7 @@
           let token = this.$store.getters.token
           userInfo.token = token
           this.$store.dispatch('updateUserInfo', {userInfo: userInfo})
+          this.userInfo = this.$store.getters.userInfo
         }).catch(err => {
           this.$vux.toast.text(err.message, 'middle')
         })
@@ -33,10 +34,7 @@
     },
     created() {
       if(!this.userInfo.id){
-        let _this = this
-        setTimeout(function () {
-          _this.getUserInfo()
-        })
+        this.getUserInfo()
       }
     }
   }
@@ -48,7 +46,7 @@
       <div class="title">我的</div>
       <div class="info-wrap">
         <div class="headImg">
-          <img src="/static/images/hongsuantou.png">
+          <img :src="userInfo.avatar?userInfo.avatar:'/static/images/hongsuantou.png'">
         </div>
         <div class="info-con">
           <div class="name">{{ userInfo.name||'未命名' }}</div>

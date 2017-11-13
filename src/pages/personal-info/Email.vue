@@ -8,10 +8,21 @@
     data() {
       return {
         pageHeight:0,
-        nickName:''
+        email:''
       }
     },
     methods:{
+      modifyUserInfo(){
+        this.$httpPost('/api/user/modifyUserInfo',{
+          type:'email',
+          value:this.email
+        }).then((data)=>{
+          this.$vux.toast.text(data.data,'middle')
+          setTimeout(()=>this.$router.go(-1))
+        }).catch(err => {
+          this.$vux.toast.text(err.message, 'middle')
+        })
+      }
     },
     created() {
       this.pageHeight = document.body.clientHeight
@@ -23,10 +34,10 @@
   <div class="page":style="{'min-height':pageHeight+'px'}">
     <x-header :left-options="{backText: ''}">
       <span class="header-text">修改邮箱</span>
-      <span slot="right">保存</span>
+      <span slot="right" @click="modifyUserInfo">保存</span>
     </x-header>
     <group :gutter="-1">
-      <x-input v-model="nickName" placeholder="请填写邮箱">
+      <x-input v-model="email" placeholder="请填写邮箱">
         <div slot="label" class="label-text">邮箱</div>
       </x-input>
     </group>

@@ -38,8 +38,29 @@
       }
     },
     methods: {
+      //更改头像
       changeImg() {
         this.$refs.img.click();
+      },
+      //提交头像图片
+      submitImg(e){
+        this.$httpPost('/api/file/uploadImg',{
+          files:e.target.files[0]
+        }).then((data)=>{
+          var imgPath = data.data[0]
+          console.log(imgPath)
+          this.$httpPost('/api/user/modifyUserInfo',{
+            type:'avatar',
+            value:imgPath
+          }).then((data)=>{
+            this.$vux.toast.text(data.data,'middle')
+            this.getUserInfo();
+          }).catch(err=>{
+            this.$vux.toast.text(err.message,'middle')
+          })
+        }).catch(err=>{
+          this.$vux.toast.text(err.message,'middle')
+        })
       },
       //获取用户所有信息
       getUserInfo:function () {
@@ -48,6 +69,7 @@
           let token = this.$store.getters.token
           userInfo.token = token
           this.$store.dispatch('updateUserInfo', {userInfo: userInfo})
+          this.userInfo = this.$store.getters.userInfo
         }).catch(err => {
           this.$vux.toast.text(err.message, 'middle')
         })
@@ -64,7 +86,6 @@
         this.$httpPost('/api/user/updateBirthday', {
           birthday: timeHaoMiao + ''
         }).then((data) => {
-          console.log(data)
           if(data.statusCode==200){
             this.$vux.toast.text(data.data,'midddle');
             this.getUserInfo();
@@ -78,7 +99,15 @@
       },
       //选择性别
       chooseGener(key) {
-        console.log(key)
+        this.$httpPost('/api/user/modifySex',{
+          sex:key
+        }).then((data)=>{
+//          console.log(data)
+          this.$vux.toast.text(data.data,'middle')
+          this.getUserInfo()
+        }).catch(err=>{
+          this.$vux.toast.text(err.message,'middle')
+        })
       },
       setSex(){
         let sex = this.userInfo.sex
@@ -90,8 +119,8 @@
       }
     },
     watch: {
-      gender: function (val) {
-        console.log(val)
+      userInfo:function (val) {
+        this.setSex()
       }
     },
     created() {
@@ -100,6 +129,8 @@
       this.setDatetime(this.$store.getters.userInfo.birthday || 0)
 
       this.setSex()
+
+      this.getUserInfo()
     },
     computed: {}
   }
@@ -113,9 +144,9 @@
     <div class="fix-container">
       <group :gutter="-1">
         <cell is-link @click.native="changeImg">
-          <input type="file" accept="image/*" style="display: none" ref="img">
+          <input type="file" accept="image/*" style="display: none" ref="img" @change="submitImg">
           <div class="headImg" slot="icon">
-            <img src="/static/images/hongsuantou.png">
+            <img :src="userInfo.avatar?userInfo.avatar:'/static/images/hongsuantou.png'">
           </div>
         </cell>
         <cell title="昵称" is-link link="/personalInfo/nickName">
@@ -128,7 +159,7 @@
             {{ userInfo.name }}
           </span>
         </cell>
-        <cell title="性别" is-link>
+        <cell title="性别" is-link @click.native="showGengerOpt = true">
           <span class="cell-value">
             {{ gender }}
           </span>
