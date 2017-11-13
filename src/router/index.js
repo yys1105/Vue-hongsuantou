@@ -8,6 +8,7 @@ import Recharge from '../pages/user-center/Recharge.vue'
 import MyAppointment from '../pages/user-center/MyAppointment.vue'
 import MyWallet from '../pages/user-center/MyWallet.vue'
 import MyBankCard from '../pages/bank-card/MyBankCard.vue'
+import AddBankCard from '../pages/bank-card/AddBankCard.vue'
 import MyRecords from '../pages/user-center/MyRecords.vue'
 import MyShare from '../pages/user-center/MyShare.vue'
 import MyInviting from '../pages/user-center/MyInviting.vue'
@@ -42,6 +43,8 @@ export default new Router({
     { path: '/homePage/myWallet', name: 'myWallet', component: MyWallet },
     // 我的银行卡
     { path: '/homePage/myBankCard', name: 'myBankCard', component: MyBankCard },
+    // 添加我的银行卡
+    { path:'/homePage/myBankCard/addBankCard',name:'addBankCard',component:AddBankCard },
     // 完善个人资料
     { path: '/personalInfo', name: 'personalInfo', component: PersonalInfo },
     { path: '/homePage/myRecords', name: 'myRecords', component: MyRecords},

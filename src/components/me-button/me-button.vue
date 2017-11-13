@@ -85,4 +85,8 @@
     color: #fff;
     background-color: default-color;
     border-color: default-color;
+  .me--blue
+    color: #fff;
+    background-color: #0075ff;
+    border-color: #0075ff;
 </style>

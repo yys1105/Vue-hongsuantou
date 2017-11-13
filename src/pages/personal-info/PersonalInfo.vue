@@ -48,7 +48,7 @@
           files:e.target.files[0]
         }).then((data)=>{
           var imgPath = data.data[0]
-          console.log(imgPath)
+//          console.log(imgPath)
           this.$httpPost('/api/user/modifyUserInfo',{
             type:'avatar',
             value:imgPath
