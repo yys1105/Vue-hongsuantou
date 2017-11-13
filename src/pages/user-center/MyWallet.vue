@@ -8,6 +8,19 @@
     },
     data() {
       return {}
+    },
+    methods:{
+      getPurseView(){
+        this.$httpPost('/api/purse/getPurseView',{
+        }).then((data)=>{
+          console.log(data)
+        }).catch(err=>{
+          this.$vux.toast.text(err.message,'middle')
+        })
+      }
+    },
+    created(){
+      this.getPurseView()
     }
   }
 </script>
