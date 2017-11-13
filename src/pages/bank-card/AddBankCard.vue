@@ -55,7 +55,7 @@
           bankDeposit: this.bankDeposit,
         }).then((data)=>{
           this.$vux.toast.text('添加成功','middle')
-          setTimeout(()=>this.$router.go(-1),1000)
+          setTimeout(()=>this.$router.go(-1),500)
         }).catch(err=>{
           this.$vux.toast.text(err.message,'middle')
         })

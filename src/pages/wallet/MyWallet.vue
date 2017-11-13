@@ -1,19 +1,28 @@
 <script>
   import {XHeader, Group, Cell, CheckIcon, XButton} from 'vux'
-
+  import numeral from 'numeral'
   export default {
     name: 'myWallet',
     components: {
       XHeader, Group, Cell, CheckIcon, XButton
     },
     data() {
-      return {}
+      return {
+        allIncome:'',
+        balance:'',
+        frozenAmount:'',
+        purseInfoList:[]
+      }
     },
     methods:{
+      //获取钱包页面
       getPurseView(){
         this.$httpPost('/api/purse/getPurseView',{
         }).then((data)=>{
-          console.log(data)
+          this.allIncome = numeral(data.data.allIncome).format('0,0.00')
+          this.balance = numeral(data.data.balance).format('0,0.00')
+          this.frozenAmount = numeral(data.data.frozenAmount?data.data.frozenAmount:0).format('0,0.00')
+          this.purseInfoList = data.data.purseInfoList
         }).catch(err=>{
           this.$vux.toast.text(err.message,'middle')
         })
@@ -30,7 +39,7 @@
     <x-header :left-options="{backText: ''}"><span class="header-text">我的钱包</span></x-header>
     <div class="header">
       <div class="title">账户余额</div>
-      <div class="money">0.00</div>
+      <div class="money">{{ balance }}</div>
       <div class="use-button-wrap">
         <div class="use-button">
           使用余额
@@ -42,7 +51,7 @@
             <div class="name">
               总收入
             </div>
-            <div class="num">￥0</div>
+            <div class="num">￥{{ allIncome }}</div>
           </div>
         </div>
         <div class="right">
@@ -50,7 +59,7 @@
             <div class="name">
               消费券
             </div>
-            <div class="num">￥0</div>
+            <div class="num">￥{{ frozenAmount }}</div>
           </div>
         </div>
       </div>
